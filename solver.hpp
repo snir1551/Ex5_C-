@@ -7,7 +7,6 @@
 namespace solver
 {
     
-    class RealVariable;
     double solve(const RealVariable& real);
 
     class RealVariable
@@ -16,8 +15,8 @@ namespace solver
                 double a, b, c;
 
         public:
-			    RealVariable();
-			    RealVariable(double c);
+		RealVariable();
+		RealVariable(double c);
                 RealVariable(double c, double b, double a);
 
                 double getA() const
@@ -45,7 +44,7 @@ namespace solver
                 friend RealVariable operator ^(double, const RealVariable&);                
                 friend RealVariable operator +(double, const RealVariable&);
                 friend RealVariable operator -(double, const RealVariable&);
-		        friend RealVariable operator ==(double, const RealVariable&);
+		friend RealVariable operator ==(double, const RealVariable&);
                 
 
     };
@@ -59,8 +58,8 @@ namespace solver
             	std::complex<double> a, b, c;
 
         public:
-		        ComplexVariable();
-		        ComplexVariable(double c);
+		ComplexVariable();
+		ComplexVariable(double c);
                 ComplexVariable(const std::complex<double>& c);
                 ComplexVariable(const std::complex<double>& c,
                 const std::complex<double>& b, const std::complex<double>& a);
@@ -95,14 +94,14 @@ namespace solver
                 friend ComplexVariable operator +(const std::complex<double>&, const ComplexVariable&);
                 friend ComplexVariable operator -(double, const ComplexVariable&);
                 friend ComplexVariable operator -(const std::complex<double>&, const ComplexVariable&);
-		        friend ComplexVariable operator ==(double, const ComplexVariable&);
+		friend ComplexVariable operator ==(double, const ComplexVariable&);
                 friend ComplexVariable operator ==(const std::complex<double>&, const ComplexVariable&);
                 
 
     };
 
     bool doublesEqual(double d1, double d2);
-	void findRealQuadraticEquationRoots(const RealVariable& real, double roots[2], int& numRoots);
+    void findRealQuadraticEquationRoots(const RealVariable& real, double roots[2], int& numRoots);
 };
 
 #endif
