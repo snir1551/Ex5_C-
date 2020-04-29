@@ -154,7 +154,7 @@ namespace solver
 		return ComplexVariable();
 	}
 
-	ComplexVariable operator *(std::complex<double>, const ComplexVariable&)
+	ComplexVariable operator *(const std::complex<double>&, const ComplexVariable&)
 	{
 		return ComplexVariable();
 	}
@@ -164,7 +164,7 @@ namespace solver
 		return ComplexVariable();
 	}
 
-	ComplexVariable operator /(std::complex<double>, const ComplexVariable&)
+	ComplexVariable operator /(const std::complex<double>&, const ComplexVariable&)
 	{
 		return ComplexVariable();
 	}
@@ -174,7 +174,7 @@ namespace solver
 		return ComplexVariable();
 	}
 
-	ComplexVariable operator ^(std::complex<double>, const ComplexVariable&)
+	ComplexVariable operator ^(const std::complex<double>&, const ComplexVariable&)
 	{
 		return ComplexVariable();
 	}
@@ -184,7 +184,7 @@ namespace solver
 		return ComplexVariable();
 	}
 
-	ComplexVariable operator +(std::complex<double>, const ComplexVariable&)
+	ComplexVariable operator +(const std::complex<double>&, const ComplexVariable&)
 	{
 		return ComplexVariable();
 	}
@@ -194,7 +194,7 @@ namespace solver
 		return ComplexVariable();
 	}
 
-	ComplexVariable operator -(std::complex<double>, const ComplexVariable&)
+	ComplexVariable operator -(const std::complex<double>&, const ComplexVariable&)
 	{
 		return ComplexVariable();
 	}
@@ -204,7 +204,7 @@ namespace solver
 		return ComplexVariable();
 	}
 
-	ComplexVariable operator ==(std::complex<double>, const ComplexVariable&)
+	ComplexVariable operator ==(const std::complex<double>&, const ComplexVariable&)
 	{
 		return ComplexVariable();
 	}

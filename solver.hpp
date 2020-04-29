@@ -78,18 +78,19 @@ namespace solver
                 ComplexVariable operator==(const ComplexVariable& complex) const;
 
                 friend ComplexVariable operator *(double, const ComplexVariable&);
-                friend ComplexVariable operator *(std::complex<double>, const ComplexVariable&);
+                friend ComplexVariable operator *(const std::complex<double>&, const ComplexVariable&);
                 friend ComplexVariable operator /(double, const ComplexVariable&);
-                friend ComplexVariable operator /(std::complex<double>, const ComplexVariable&);                                                                                                                                                                                                                    
+                friend ComplexVariable operator /(const std::complex<double>&, const ComplexVariable&);                                                                                                                                                                                                                    
                 friend ComplexVariable operator ^(double, const ComplexVariable&);
-                friend ComplexVariable operator ^(std::complex<double>, const ComplexVariable&);                
+                friend ComplexVariable operator ^(const std::complex<double>&, const ComplexVariable&);                
                 friend ComplexVariable operator +(double, const ComplexVariable&);
-                friend ComplexVariable operator +(std::complex<double>, const ComplexVariable&);
+                friend ComplexVariable operator +(const std::complex<double>&, const ComplexVariable&);
                 friend ComplexVariable operator -(double, const ComplexVariable&);
-                friend ComplexVariable operator -(std::complex<double>, const ComplexVariable&);
+                friend ComplexVariable operator -(const std::complex<double>&, const ComplexVariable&);
 		friend ComplexVariable operator ==(double, const ComplexVariable&);
-                friend ComplexVariable operator ==(std::complex<double>, const ComplexVariable&);
+                friend ComplexVariable operator ==(const std::complex<double>&, const ComplexVariable&);
                 
+
 
     };
 
