@@ -1,3 +1,6 @@
+#ifndef __SOLVER_H
+#define __SOLVER_H
+
 #define EPSILON 0.0001
 #include <vector>
 #include <complex>
@@ -47,28 +50,32 @@ namespace solver
 
     };
 
-	class ComplexVariable;
 
     std::complex<double> solve(const ComplexVariable& complex);
 
     class ComplexVariable
     {
         private:   
-            double re, im;
+            	std::complex<double> a, b, c;
 
         public:
-		        ComplexVariable();
-				ComplexVariable(double re);
-		        ComplexVariable(double re, double im);
-				ComplexVariable(const std::complex<double>& complex);
+		ComplexVariable();
+		ComplexVariable(double c);
+                ComplexVariable(const std::complex<double>& c);
+                ComplexVariable(const std::complex<double>& c,
+                const std::complex<double>& b, const std::complex<double>& a);
 
-                double getRe() const
+                const std::complex<double>& getA() const
                 {
-                    return re;
+                    return a;
                 }
-                double getIm() const
+                const std::complex<double>& getB() const
                 {
-                    return im;
+                    return b;
+                }
+                const std::complex<double>& getC() const
+                {
+                    return c;
                 }
 
                 ComplexVariable operator +(const ComplexVariable& complex) const;
@@ -79,17 +86,17 @@ namespace solver
                 ComplexVariable operator==(const ComplexVariable& complex) const;
 
                 friend ComplexVariable operator *(double, const ComplexVariable&);
-                friend ComplexVariable operator *(std::complex<double>, const ComplexVariable&);
+                friend ComplexVariable operator *(const std::complex<double>&, const ComplexVariable&);
                 friend ComplexVariable operator /(double, const ComplexVariable&);
-                friend ComplexVariable operator /(std::complex<double>, const ComplexVariable&);                                                                                                                                                                                                                    
+                friend ComplexVariable operator /(const std::complex<double>&, const ComplexVariable&);                                                                                                                                                                                                                    
                 friend ComplexVariable operator ^(double, const ComplexVariable&);
-                friend ComplexVariable operator ^(std::complex<double>, const ComplexVariable&);                
+                friend ComplexVariable operator ^(const std::complex<double>&, const ComplexVariable&);                
                 friend ComplexVariable operator +(double, const ComplexVariable&);
-                friend ComplexVariable operator +(std::complex<double>, const ComplexVariable&);
+                friend ComplexVariable operator +(const std::complex<double>&, const ComplexVariable&);
                 friend ComplexVariable operator -(double, const ComplexVariable&);
-                friend ComplexVariable operator -(std::complex<double>, const ComplexVariable&);
-		        friend ComplexVariable operator ==(double, const ComplexVariable&);
-                friend ComplexVariable operator ==(std::complex<double>, const ComplexVariable&);
+                friend ComplexVariable operator -(const std::complex<double>&, const ComplexVariable&);
+		friend ComplexVariable operator ==(double, const ComplexVariable&);
+                friend ComplexVariable operator ==(const std::complex<double>&, const ComplexVariable&);
                 
 
     };
@@ -97,3 +104,5 @@ namespace solver
     bool doublesEqual(double d1, double d2);
 	void findRealQuadraticEquationRoots(const RealVariable& real, double roots[2], int& numRoots);
 };
+
+#endif
