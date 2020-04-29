@@ -44,14 +44,17 @@ TEST_CASE("Check the correctness of addition (operator +)") {
 
         CHECK_LE(abs(solve(35+x == 5).real()+30), EP);//-30+0i
         CHECK_LE(abs(solve(35+x == 5).imag()+0), EP);//-30+0i
-        CHECK_LE(abs(solve(x+3i+5 = 5).real()+0), EP);//0-3i
-        CHECK_LE(abs(solve(x+3i+5 = 5).imag()+3), EP);//0-3i
+        CHECK_LE(abs(solve(x+3i+5 == 5).real()+0), EP);//0-3i
+        CHECK_LE(abs(solve(x+3i+5 == 5).imag()+3), EP);//0-3i
         CHECK_LE(abs(solve(2i+3i == x).real()+0), EP);//5i
         CHECK_LE(abs(solve(2i+3i == x).imag()-5), EP);//5i
-        CHECK_LE(abs(solve(2i+3i+2i+x+x+11+x+x+x+10i+x+3i == 7+x+x+19i+x+0i+x).imag()+(1/2)), EP);//x = -4-(1/2)i
-        CHECK_LE(abs(solve(2i+3i+2i+x+x+x+x+x+10i+x+3i == x+x+19i+x+0i+x).real()+4), EP);//x = -4-(1/2)i
+        CHECK_LE(abs(solve(2i+3i+2i+x+x+11+x+x+x+10i+x+3i == 7+x+x+19i+x+0i+x).imag()+1), EP);//-4-i
+        CHECK_LE(abs(solve(2i+3i+2i+x+x+11+x+x+x+10i+x+3i == 7+x+x+19i+x+0i+x).real()+4), EP);//-4-i
+        CHECK_LE(abs(solve(2i+3i+2i+x+x+x+x+x+10i+x+3i == x+x+19i+x+0i+x).real()+0), EP);//x = 0-i
+        CHECK_LE(abs(solve(2i+3i+2i+x+x+x+x+x+10i+x+3i == x+x+19i+x+0i+x).imag()+1), EP);//x = 0-i
         CHECK_LE(abs(solve(0i+1i+5i+x+3+2i+61+3i == 7i+3i+x+x+3i+x+1).real()-30), EP);//30-i
         CHECK_LE(abs(solve(0i+1i+5i+x+3+2i+61+3i == 7i+3i+x+x+3i+x+1).imag()+1), EP);//30-i
+        CHECK_LE(abs(solve(2i+3i+3.0 == x).imag()-5), EP);//5i
     }
 
 }
@@ -95,8 +98,8 @@ TEST_CASE("Check the correctness of subtraction (operator -)") {
 
         CHECK_LE(abs(solve(35-y == 5).real()-30), EP);//30+0i
         CHECK_LE(abs(solve(35-y == 5).imag()-0), EP);// 30+0i
-        CHECK_LE(abs(solve(y-3i-5 = 5).real()-10), EP);//10+3i
-        CHECK_LE(abs(solve(y-3i-5 = 5).imag()-3), EP);// 10+3i
+        CHECK_LE(abs(solve(y-3i-5 == 5).real()-10), EP);//10+3i
+        CHECK_LE(abs(solve(y-3i-5 == 5).imag()-3), EP);// 10+3i
         CHECK_LE(abs(solve(2i-3i == y).real()+0), EP);//0-i
         CHECK_LE(abs(solve(2i-3i == y).imag()+1), EP);//0-i
         CHECK_LE(abs(solve(2i-3i-2i-y-y-11-y-y-y-10i-y-3i == 7-y-y-19i-y-0i-y).real()+9), EP);//-9+(3/2)i
@@ -282,17 +285,16 @@ TEST_CASE("Check the correctness of equation 2") {
         CHECK_LE(abs(solve(1i^2+x*4-51 == 0).imag()-0), EP);//13+0i
     }
 }
-/*
+
 TEST_CASE("Check the correctness of trow exception") {
     RealVariable x;
-    CHECK_THROWS(solve(5/0 == x);//divide 0
-    CHECK_THROWS(solve(10/2/0/2 == x));//divide 0
-    CHECK_THROWS(solve(0^0 == x));//0 power 0 not illegal
-    CHECK_THROWS(solve(0^-1 == x));//0 power minus not illegal
-    CHECK_THROWS(solve(0^-5 == x));//0 power minus not illegal
-    CHECK_THROWS(solve(x^2 == -16));
+    CHECK_THROWS(solve(((x + 2 - x - 2)^0) == x));//0 power 0 not illegal
+    CHECK_THROWS(solve(((x + 2 - x - 2)^-1) == x));//0 power minus not illegal
+    CHECK_THROWS(solve(((x + 2 - x - 2)^-10) == x));//0 power minus not illegal
+    CHECK_THROWS(solve((x^2) == -16));
+    
 }
-*/
+
 
 
 
